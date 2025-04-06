@@ -8,8 +8,11 @@ import bsod
 import bsod.util as butil
 
 
-fpath = "../data/field_book.csv"
-fbook = bsod.get_fieldbook(fpath)
+fbook_path = "../data/field_book.csv"
+raw_data_dir = "../data/raw_data"
+qc_data_dir = "../data/qc_data"
+
+fbook = bsod.get_fieldbook(fbook_path)
 
 
 for i in range(len(fbook)):
@@ -20,16 +23,12 @@ for i in range(len(fbook)):
     print(st_name, launch_time, sonde_no)
 
     # get raw data
-    df = butil.get_raw_df(launch_time, sonde_no, parent_dir="../data/raw_data")
-    print(df.head())
-    print(len(df))
+    df = butil.get_raw_df(launch_time, sonde_no, parent_dir=raw_data_dir)
+    print(f"raw data\t: {len(df)} records")
 
     # get qc data
     df = butil.get_qcdata(df, launch_time, sonde_no)
+    print(f"post qc data\t: {len(df)} records")
 
-    print(df.head())
-    # print(df.dtypes)
-    print(len(df))
-
-    qcdata_fpath = f"../data/qc_data/{st_name}.csv"
+    qcdata_fpath = f"{qc_data_dir}/{st_name}.csv"
     df.to_csv(qcdata_fpath)

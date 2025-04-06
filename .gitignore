@@ -178,4 +178,4 @@ cython_debug/
 *csv
 
 # figure
-*png
+sample/fig/*

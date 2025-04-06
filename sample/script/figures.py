@@ -1,0 +1,29 @@
+#!/usr/bin/python3
+# encoding utf-8 -*-
+
+import sys
+import pandas as pd
+
+sys.path.append("../../")
+
+import bsod
+from bsod.plots import plot_emagram
+
+fpath = "../data/field_book.csv"
+qc_data_dir = "../data/qc_data"
+fig_dir = "../fig"
+
+fbook = bsod.get_fieldbook(fpath)
+
+
+for i in range(len(fbook)):
+    st_name = fbook["st_name"].iloc[i]
+    launch_time = fbook["JSTtime"].iloc[i]
+    sonde_no = fbook["sonde_no"].iloc[i]
+    print("************************")
+    print(st_name, launch_time, sonde_no)
+
+    qcdata_fpath = f"{qc_data_dir}/{st_name}.csv"
+    df = pd.read_csv(qcdata_fpath, index_col=0)
+
+    plot_emagram(df, f"{fig_dir}/emagram/{st_name}.png")
