@@ -22,6 +22,6 @@ Required packages:
 (See also ```sample/script/preprocess.py```)
 ### visualization
 - emagram: ```bsod.plots.emagram()```
-## Auther
+## Author
 Sou Tomita
 
