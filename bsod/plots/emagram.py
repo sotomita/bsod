@@ -19,6 +19,7 @@ def temp_emagram(
     fig_path: str = "./",
 ) -> None:
     """plot temperature emagram
+
     Parameters
     ----------
     temp    :   pint.Quantity
@@ -33,6 +34,7 @@ def temp_emagram(
         launch time
     fig_path    :   str, default="./"
         figure path
+
     Returns
     ----------
     None
@@ -118,6 +120,7 @@ def plot_emagram(
     mode: str = "temp",
 ) -> None:
     """wrapper for plot (temperature or potential temp.) emagram.
+
     Parameters
     ----------
     st_name :   str
@@ -131,6 +134,7 @@ def plot_emagram(
     rm_descinding   :   bool, default=True
     mode    :   str
         "temp" for plot the temperature emagram
+
     Returns
     ----------
     None
