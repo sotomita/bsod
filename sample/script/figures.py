@@ -26,4 +26,4 @@ for i in range(len(fbook)):
     qcdata_fpath = f"{qc_data_dir}/{st_name}.csv"
     df = pd.read_csv(qcdata_fpath, index_col=0)
 
-    plot_emagram(df, f"{fig_dir}/emagram/{st_name}.png")
+    plot_emagram(st_name, launch_time, df, f"{fig_dir}/emagram/{st_name}.png")

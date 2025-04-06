@@ -1,34 +1,42 @@
 #!/usr/bin/python3
 # -*- encoding utf-8 -*-
 
+from datetime import datetime
 import numpy as np
+import pint
 import pandas as pd
 import matplotlib.pyplot as plt
 import metpy.calc as mpcalc
 from metpy.units import units
 
 
-def temp_emagram(temp, dewpoint, prs) -> None:
+def temp_emagram(
+    temp: pint.Quantity,
+    dewpoint: pint.Quantity,
+    prs: pint.Quantity,
+    st_name: str = "",
+    launch_time="",
+    fig_path: str = "./",
+) -> None:
     """plot temperature emagram
     Parameters
     ----------
+    temp    :   pint.Quantity
+        temperature
+    dewpoint    :   pint.Quantity
+        dewpoint
+    prs :   pint.Quantity
+        pressure
+    st_name :   str, default=""
+        station name
+    launch_time :   datetime or str, default=""
+        launch time
+    fig_path    :   str, default="./"
+        figure path
     Returns
     ----------
+    None
     """
-    pass
-
-
-def plot_emagram(df: pd.DataFrame, fig_path: str) -> None:
-    """ """
-    df = df.copy()
-    max_i = df["Height"].idxmax()
-    df = df.drop(index=range(max_i + 1, len(df)))
-
-    temp = df["Temp0"].values * units("degC")
-    rh = df["Humi0"].values * 1e-2
-    rh[rh <= 0] = np.nan
-    prs = df["Press0"].values * units("hPa")
-    dewpoint = mpcalc.dewpoint_from_relative_humidity(temp, rh)
 
     tmin = -90
     tmax = 40
@@ -41,6 +49,9 @@ def plot_emagram(df: pd.DataFrame, fig_path: str) -> None:
     fig = plt.figure(figsize=(9, 12))
     ax = fig.add_subplot(1, 1, 1)
     ax.set_aspect(200)
+
+    # title
+    ax.set_title(f"{st_name}  {launch_time.strftime('%Y-%m-%d %H:%M')}", fontsize=15)
 
     # x axis(degC)
     ax.set_xlabel("[degC]")
@@ -95,3 +106,47 @@ def plot_emagram(df: pd.DataFrame, fig_path: str) -> None:
         ax.plot(dry_l, plev, c="k", linewidth="0.7")
 
     plt.savefig(fig_path, dpi=512)
+    plt.close()
+
+
+def plot_emagram(
+    st_name: str,
+    launch_time: datetime,
+    df: pd.DataFrame,
+    fig_path: str,
+    rm_descending: bool = True,
+    mode: str = "temp",
+) -> None:
+    """wrapper for plot (temperature or potential temp.) emagram.
+    Parameters
+    ----------
+    st_name :   str
+        station name
+    launch_time :   datetime
+        launch time
+    df  :   pd.DataFrame
+        post-QC data
+    fig_path    :   str
+        figure path
+    rm_descinding   :   bool, default=True
+    mode    :   str
+        "temp" for plot the temperature emagram
+    Returns
+    ----------
+    None
+    """
+    df = df.copy()
+
+    # remove descending record
+    if rm_descending:
+        max_i = df["Height"].idxmax()
+        df = df.drop(index=range(max_i + 1, len(df)))
+
+    # temperature emagram
+    if mode == "temp":
+        temp = df["Temp0"].values * units("degC")
+        rh = df["Humi0"].values * 1e-2
+        rh[rh <= 0] = np.nan
+        prs = df["Press0"].values * units("hPa")
+        dewpoint = mpcalc.dewpoint_from_relative_humidity(temp, rh)
+        temp_emagram(temp, dewpoint, prs, st_name, launch_time, fig_path)
