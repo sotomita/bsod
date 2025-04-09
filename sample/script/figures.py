@@ -27,13 +27,13 @@ for i in range(len(fbook)):
     df = pd.read_csv(qcdata_fpath, index_col=0)
 
     # plot temperature emagram
-    # plot_emagram(st_name, launch_time, df, f"{fig_dir}/emagram/{st_name}.png")
+    plot_emagram(st_name, launch_time, df, f"{fig_dir}/emagram/{st_name}.png")
 
     # plot 2D trajectory
-    plot_trajectory_2d(
+    """plot_trajectory_2d(
         {st_name: df},
         [135.5, 139.5, 33.5, 35.5],
         f"{fig_dir}/trajectory2d/{st_name}.png",
-    )
+    )"""
 
     break
