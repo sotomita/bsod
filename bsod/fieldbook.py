@@ -5,11 +5,13 @@ import pandas as pd
 
 
 def get_fieldbook(fpath: str) -> pd.DataFrame:
-    """read field book DataFrame.
+    """read field book as DataFrame.
+
     Parameters
     ----------
     fpath   :   str
         file path of field book(.csv)
+
     Returns
     ----------
     pd.DataFrame

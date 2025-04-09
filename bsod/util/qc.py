@@ -6,13 +6,20 @@ import pandas as pd
 
 
 def numeric_condition_idx(df: pd.DataFrame, field: str, conditons: list):
-    """return the indice that satisfy the condition
+    """return indice that satisfy the condition
+
     Parameters
     ----------
+    df  :   pd.DataFrame
+    field   :   str
+        field (column) that focused on.
+    conditions  :   list
+
     Returns
     ----------
     idx_all
         indice that satisfy the condition(s)
+
     """
     for i in range(len(conditons)):
         idx = pd.to_numeric(df[field], errors="coerce") == conditons[i]
@@ -25,10 +32,20 @@ def get_qcdata(
     raw_df: pd.DataFrame, launch_time: datetime, sonde_no: str
 ) -> pd.DataFrame:
     """get post QC data.
+
     Parameters
     ----------
+    raw_df  :   pd.DataFrame
+        raw data
+    launch_time :   datetime
+        launch time
+    sonde_no    :   str
+        sonde No.(:production No.)
+
     Returns
     ----------
+    pd.DataFrame
+        post QC data
     """
 
     df = raw_df.copy()

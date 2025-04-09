@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 # -*- encoding utf-9 -*-
 
+import os
 import sys
 
 sys.path.append("../../")
@@ -11,6 +12,8 @@ import bsod.util as butil
 fbook_path = "../data/field_book.csv"
 raw_data_dir = "../data/raw_data"
 qc_data_dir = "../data/qc_data"
+
+os.makedirs(qc_data_dir, exist_ok=True)
 
 fbook = bsod.get_fieldbook(fbook_path)
 

@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 # encoding utf-8 -*-
 
+import os
 import sys
 import pandas as pd
 
@@ -12,6 +13,8 @@ from bsod.plots import plot_emagram
 fpath = "../data/field_book.csv"
 qc_data_dir = "../data/qc_data"
 fig_dir = "../fig"
+
+os.makedirs(fig_dir, exist_ok=True)
 
 fbook = bsod.get_fieldbook(fpath)
 
@@ -27,6 +30,5 @@ for i in range(len(fbook)):
     df = pd.read_csv(qcdata_fpath, index_col=0)
 
     # plot temperature emagram
+    os.makedirs(f"{fig_dir}/emagram", exist_ok=True)
     plot_emagram(st_name, launch_time, df, f"{fig_dir}/emagram/{st_name}.png")
-
-    # plot 2D trajectory
