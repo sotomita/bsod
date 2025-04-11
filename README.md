@@ -1,5 +1,5 @@
 # BSoD
-BSoD(BalloonScope on Deck) is a package in Python for reading, visualizing radiosonde data.  
+BSoD(BalloonScope on Deck) is a package in Python for reading and visualizing radiosonde data.  
 This module was developed for Seisui-maru 2407 cruise.
 
 <p align="center">
