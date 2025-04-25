@@ -13,18 +13,22 @@ def plot_trajectory_2d(
     df_dict: dict, var_name: str, plot_area: list, fig_path: str, **kwargs
 ) -> None:
     """
-    _summary_
+    plot 2d trajectories with a variable(e.g. temperature,RH).
 
     Parameters
     ----------
     df_dict : dict
-        _description_
+        dictionary of the post-QC data.
+        key: station name
+        value: post-QC data(pd.DataFrame)
+    var_name : str
+        variable name
     plot_area : list
-        _description_
+        [min_lon,max_lon,min_lat,max_lat]
     fig_path : str
-        _description_
+        file path of the output figure.
     """
-    central_longitude = kwargs.get("central_longitude", 135)
+
     if "cmap" in kwargs:
         cmap = kwargs.get("cmap")
     else:
