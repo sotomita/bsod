@@ -8,7 +8,7 @@ import pandas as pd
 sys.path.append("../../")
 
 import bsod
-from bsod.plots import plot_emagram
+from bsod.plots import plot_emagram, plot_trajectory_2d
 
 fpath = "../data/field_book.csv"
 qc_data_dir = "../data/qc_data"
@@ -32,3 +32,10 @@ for i in range(len(fbook)):
     # plot temperature emagram
     os.makedirs(f"{fig_dir}/emagram", exist_ok=True)
     plot_emagram(st_name, launch_time, df, f"{fig_dir}/emagram/{st_name}.png")
+    """plot_trajectory_2d(
+        {st_name: df},
+        [135.5, 139.5, 33.5, 35.5],
+        f"{fig_dir}/trajectory2d/{st_name}.png",
+    )"""
+
+    break

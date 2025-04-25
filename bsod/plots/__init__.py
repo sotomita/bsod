@@ -2,3 +2,4 @@
 # -*- encoding utf-8 -*-
 
 from .emagram import plot_emagram
+from .trajectory import plot_trajectory_2d
