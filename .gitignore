@@ -174,8 +174,7 @@ cython_debug/
 .pypirc
 
 # data
-*CSV
-*csv
+sample/data/qc_data
 
 # figure
 sample/fig/*
