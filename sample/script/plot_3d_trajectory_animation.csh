@@ -5,8 +5,8 @@
 set var_name = "rh"
 set start_time = "2024-06-18_06:00:00"
 set end_time = "2024-06-18_16:00:00"
-set frame_delta_min = "5"
-set plot_delta_min = "60"
+set frame_delta_min = "3"
+set plot_delta_min = "30"
 set fig_dir = "../fig/trajectory3d_animation/${var_name}"
 
 mkdir -p "${fig_dir}/frame"

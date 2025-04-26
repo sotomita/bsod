@@ -5,7 +5,7 @@ This module was developed for Seisui-maru 2407 cruise.
 <p align="center">
 <img src="./fig/emagram.png" alt="emagram" width="250"/>
 <img src="./fig/trj_2d_rh.png" alt="RH 2D trajectory" width="250"/>
-<img src="./fig/trj_3d_rh.png" alt="RH 2D trajectory" width="250"/>
+<img src="./fig/trj_3d_animation_rh.gif" alt="RH 2D trajectory" width="250"/>
 </p>
 
 ## Dependencies
@@ -30,12 +30,23 @@ For run ```plot_3d_trajectory_animation.csh```, the following are required
 (See also ```sample/script/preprocess.py```)
 ### visualization
 - emagram: ```bsod.plots.emagram()```
+- 2D trajectory: ```bsod.plots.plots_trajectory2d```
+- 3D trajectory: ```bsod.plots.plots_trajectory3d```
 
 ## Sample
 ### radiosonde data ```sample/data/raw_data```
 Sample data was observed on Seisui-maru 2407 cruise  
 (2024年度　三重大学　陸海空・環境科学実習).  
 ### field book ```sample/data/field_book.csv```
+### script
+- ```sample/libcheck.py```  
+check the dependencies.
+- ```sample/preprocess.py```  
+Quality Control
+- ```sample/figures.py```  
+plot emagram and 2D/3D trajectory
+- ```sample/script/plot_3d_trajectory_animation.csh```  
+plot animation of the 3D trajectories.
 
 
 

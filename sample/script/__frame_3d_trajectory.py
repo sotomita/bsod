@@ -35,7 +35,6 @@ while time <= end_time:
     time += frame_delta_time
 
 plot_valid_time = start_time
-plot_delta_time = timedelta(minutes=15)
 
 fbook = bsod.get_fieldbook(fpath)
 

@@ -22,7 +22,7 @@ fbook = bsod.get_fieldbook(fpath)
 
 
 # plot emagram
-"""
+
 print("*************************************")
 print("emagram")
 print("St. name\tJST time\tsonde No.")
@@ -37,10 +37,10 @@ for i in range(len(fbook)):
 
     # plot temperature emagram
     os.makedirs(f"{fig_dir}/emagram", exist_ok=True)
-    plot_emagram(st_name, launch_time, df, f"{fig_dir}/emagram/{st_name}.png")"""
+    plot_emagram(st_name, launch_time, df, f"{fig_dir}/emagram/{st_name}.png")
 
 # plot 2d trajectory
-"""df_dict = {}
+df_dict = {}
 for i in range(len(fbook)):
     st_name = fbook["st_name"].iloc[i]
     launch_time = fbook["JSTtime"].iloc[i]
@@ -61,7 +61,7 @@ for var in vars:
         fig_path=f"{fig_dir}/trajectory2d/{var}.png",
         lon_ticks=np.arange(135.5, 138.6, 0.5),
         lat_ticks=np.arange(34.0, 35.6, 0.5),
-    )"""
+    )
 
 # plot 3D trajectory
 df_dict = {}
