@@ -10,12 +10,17 @@ This module was developed for Seisui-maru 2407 cruise.
 
 ## Dependencies
 Required packages:
+
 - Numpy
 - Pandas
 - Matplotlib
 - Cartopy
 - MetPy
 - PyGMT
+
+For run ```plot_3d_trajectory_animation.csh```, the following are required
+- tqdm
+- convert (in ImageMagick)
 
 ## Usage
 ### preprocess

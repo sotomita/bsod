@@ -198,6 +198,10 @@ def plot_trajectory_3d(
         cbar_label = ""
     if "cmap" in kwargs.keys():
         cmap = kwargs.get("cmap")
+    if "title" in kwargs.keys():
+        title = kwargs.get("title")
+    else:
+        title = ""
 
     grid = pygmt.datasets.load_earth_relief(
         resolution="01m",
@@ -209,7 +213,7 @@ def plot_trajectory_3d(
         grid=grid,
         perspective=[azimuth, elev],
         region=region,
-        frame=["xaf", "yaf", "zafg1000+lElevation (m)"],
+        frame=["xaf", "yaf", "zafg1000+lElevation (m)", f"+t{title}"],
         shading=True,
         surftype="s",
         cmap="geo",
@@ -226,6 +230,9 @@ def plot_trajectory_3d(
     for i in range(len(st_name_list)):
         st_name = st_name_list[i]
         df = df_list[i]
+        if len(df) == 0:
+            continue
+
         lon = df["GeodetLon"].values
         lat = df["GeodetLat"].values
         z = df["Height"].values
