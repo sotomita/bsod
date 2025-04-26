@@ -7,6 +7,7 @@ from matplotlib import cm
 import matplotlib.ticker as mticker
 import cartopy.crs as ccrs
 import cartopy.feature as cfeature
+import pygmt
 
 
 def plot_trajectory_2d(
@@ -162,3 +163,91 @@ def plot_trajectory_2d(
 
     plt.tight_layout()
     plt.savefig(fig_path, dpi=512)
+
+
+def plot_trajectory_3d(
+    df_dict: dict,
+    var_name: str,
+    region: list,
+    fig_path: str,
+    **kwargs,
+) -> None:
+
+    if "azimuth" in kwargs.keys():
+        azimuth = kwargs.get("azimuth")
+    else:
+        azimuth = 135
+    if "elevation" in kwargs.keys():
+        elev = kwargs.get("elevation")
+    else:
+        elev = 20
+
+    if var_name == "height":
+        cbar_label = "Height [m]"
+        series = [0, 15000]
+        cmap = "turbo"
+    elif var_name == "temp":
+        cbar_label = "Temperature [degC]"
+        series = [-50, 40]
+        cmap = "turbo"
+    elif var_name == "rh":
+        cbar_label = "RH [%]"
+        series = [0, 100]
+        cmap = "seis"
+    else:
+        cbar_label = ""
+    if "cmap" in kwargs.keys():
+        cmap = kwargs.get("cmap")
+
+    grid = pygmt.datasets.load_earth_relief(
+        resolution="01m",
+        region=region,
+    )
+    fig = pygmt.Figure()
+
+    fig.grdview(
+        grid=grid,
+        perspective=[azimuth, elev],
+        region=region,
+        frame=["xaf", "yaf", "zafg1000+lElevation (m)"],
+        shading=True,
+        surftype="s",
+        cmap="geo",
+        projection="X10c/6c",
+        zscale=0.0002,
+    )
+
+    # fig.colorbar(frame=["af", "y+lElevation (m)"])
+
+    pygmt.makecpt(cmap=cmap, series=series)
+
+    st_name_list = list(df_dict.keys())
+    df_list = list(df_dict.values())
+    for i in range(len(st_name_list)):
+        st_name = st_name_list[i]
+        df = df_list[i]
+        lon = df["GeodetLon"].values
+        lat = df["GeodetLat"].values
+        z = df["Height"].values
+        if var_name == "height":
+            var = df["Height"].values
+        elif var_name == "temp":
+            var = df["Temp0"].values
+        elif var_name == "rh":
+            var = df["Humi0"].values
+
+        fig.plot3d(
+            x=lon,
+            y=lat,
+            z=z,
+            style="u0.05c",
+            fill=var,
+            cmap=True,
+            perspective=[azimuth, elev],
+            zscale=0.0002,
+        )
+
+    with fig.shift_origin(xshift=0):
+        fig.colorbar(frame=f"xaf+l {cbar_label}")
+
+    fig.savefig(fig_path)
