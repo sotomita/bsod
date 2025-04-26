@@ -1,4 +1,10 @@
 # BSoD
+<img src="https://img.shields.io/github/license/sotomita/bsod
+">
+<img src="https://img.shields.io/github/languages/code-size/sotomita/bsod
+">
+<img src="https://img.shields.io/badge/-Python-gray.svg?logo=Python">
+
 BSoD(BalloonScope on Deck) is a package in Python for reading and visualizing radiosonde data.  
 This module was developed for Seisui-maru 2407 cruise.
 
@@ -31,18 +37,26 @@ For run ```plot_3d_trajectory_animation.csh```, the following are required
 ### visualization
 - emagram: ```bsod.plots.emagram()```
 - 2D trajectory: ```bsod.plots.plots_trajectory2d```
-- 3D trajectory: ```bsod.plots.plots_trajectory3d```
+- 3D trajectory: ```bsod.plots.plots_trajectory3d```  
+(See also ```sample/script/figures.py```)
 
 ## Sample
-### radiosonde data ```sample/data/raw_data```
-Sample data was observed on Seisui-maru 2407 cruise  
+### radiosonde data  
+```sample/data/raw_data```  
+Sample data was observed in Seisui-maru 2407 cruise  
 (2024年度　三重大学　陸海空・環境科学実習).  
-### field book ```sample/data/field_book.csv```
+### field book 
+```sample/data/field_book.csv```   
+example:  
+```
+st_name,JSTtime,sonde_no
+St.4a,2024-06-18_06:01,1101771
+```
 ### script
 - ```sample/libcheck.py```  
 check the dependencies.
 - ```sample/preprocess.py```  
-Quality Control
+conduct quality Control
 - ```sample/figures.py```  
 plot emagram and 2D/3D trajectory
 - ```sample/script/plot_3d_trajectory_animation.csh```  
