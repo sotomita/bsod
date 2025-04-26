@@ -15,6 +15,7 @@ Required packages:
 - Matplotlib
 - Cartopy
 - MetPy
+- PyGMT
 
 ## Usage
 ### preprocess
