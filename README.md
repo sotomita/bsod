@@ -3,9 +3,9 @@ BSoD(BalloonScope on Deck) is a package in Python for reading and visualizing ra
 This module was developed for Seisui-maru 2407 cruise.
 
 <p align="center">
-<img src="./fig/emagram.png" alt="emagram" width="250"/>
-<img src="./fig/trj_2d_rh.png" alt="RH 2D trajectory" width="250"/>
-<img src="./fig/trj_3d_animation_rh.gif" alt="RH 2D trajectory" width="250"/>
+<img src="./fig/emagram.png" alt="emagram" width="200"/>
+<img src="./fig/trj_2d_rh.png" alt="RH 2D trajectory" width="200"/><br>
+<img src="./fig/trj_3d_animation_rh.gif" alt="RH 2D trajectory" width="400"/>
 </p>
 
 ## Dependencies
