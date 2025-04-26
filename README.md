@@ -1,8 +1,9 @@
 # BSoD
+<p>
 <img src="https://img.shields.io/github/license/sotomita/bsod">
 <img src="https://img.shields.io/github/languages/code-size/sotomita/bsod">
 <img src="https://img.shields.io/badge/-Python-gray.svg?logo=Python">
-
+</p>
 BSoD(BalloonScope on Deck) is a package in Python for reading and visualizing radiosonde data.  
 This module was developed for Seisui-maru 2407 cruise.
 
