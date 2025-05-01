@@ -1,11 +1,27 @@
 #!/usr/bin/csh
 
+###---ここから追加---#### (20250501)
+## conda本体を使えるようにする
+#source `conda info --base`/etc/profile.d/conda.csh
+#
+## 仮想環境名が存在するかチェック
+#if ($?CONDA_DEFAULT_ENV) then
+#    echo "仮想環境 '$CONDA_DEFAULT_ENV' を再アクティベートします。"
+#    conda activate $CONDA_DEFAULT_ENV
+#else
+#    echo "仮想環境はアクティブではありません。conda activate はスキップします。"
+##endif
+
+# ここからPythonスクリプト実行
+###---ここまで追加---###
+
+
 # plot 3D trajectory animation
 
 set var_name = "rh"
 set start_time = "2024-06-18_06:00:00"
 set end_time = "2024-06-18_16:00:00"
-set frame_delta_min = "3"
+set frame_delta_min = "10"
 set plot_delta_min = "30"
 set fig_dir = "../fig/trajectory3d_animation/${var_name}"
 
