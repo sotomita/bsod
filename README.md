@@ -24,13 +24,19 @@ Required packages:
 - MetPy
 - PyGMT
 
-For run ```plot_3d_trajectory_animation.csh```, the following are required
+To run ```plot_3d_trajectory_animation.csh```, the following are required
 - tqdm
 - convert (in ImageMagick)
 
 ## Usage
 ### preprocess
 1. Prepare field_book.csv
+example:  
+```
+st_name,JSTtime,sonde_no
+St.4a,2024-06-18_06:01,1101771
+```
+
 2. Run ```bsod.util.get_qcdata()```  
 
 (See also ```sample/script/preprocess.py```)
@@ -47,17 +53,13 @@ Sample data was observed in Seisui-maru 2407 cruise
 (2024年度　三重大学　陸海空・環境科学実習).  
 ### field book 
 ```sample/data/field_book.csv```   
-example:  
-```
-st_name,JSTtime,sonde_no
-St.4a,2024-06-18_06:01,1101771
-```
+
 ### script
-- ```sample/libcheck.py```  
+- ```sample/scrpit/libcheck.py```  
 check the dependencies.
-- ```sample/preprocess.py```  
+- ```sample/script/preprocess.py```  
 conduct quality Control
-- ```sample/figures.py```  
+- ```sample/script/figures.py```  
 plot emagram and 2D/3D trajectory
 - ```sample/script/plot_3d_trajectory_animation.csh```  
 plot animation of the 3D trajectories.
