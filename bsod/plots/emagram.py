@@ -10,9 +10,20 @@ import metpy.calc as mpcalc
 from metpy.units import units
 
 
+def neary_idx(array: np.ndarray, target: np.ndarray) -> list:
+    near_idx = []
+    for i in range(target.shape[0]):
+        if array.nanmin() < target and target < array.nanmax():
+            neari = np.abs(array - target).argmin()
+            near_idx.append(neari)
+    return near_idx
+
+
 def temp_emagram(
     temp: pint.Quantity,
     dewpoint: pint.Quantity,
+    wd: pint.Quantity,
+    ws: pint.Quantity,
     prs: pint.Quantity,
     st_name: str = "",
     launch_time="",
@@ -28,6 +39,10 @@ def temp_emagram(
         dewpoint
     prs :   pint.Quantity
         pressure
+    wd  :   pint.Quantity
+        wind direction
+    ws  :   pint.Quantity
+        wind speed
     st_name :   str, default=""
         station name
     launch_time :   datetime or str, default=""
@@ -40,13 +55,20 @@ def temp_emagram(
     None
     """
 
+    # --- parameters ---
+    # temperature
     tmin = -90
     tmax = 40
     tticks = np.arange(tmin, tmax + 1e-4, 10)
     tticks_minor = np.arange(tmin, tmax + 1e-4, 5)
+    # pressure
     pmin = 100
     pmax = 1050
     pticks = np.arange(pmin, pmax + 1e-4, 100)
+    # wind
+    wind_target_p = np.arange(100, 1200, 25)
+
+    # ---------------
 
     fig = plt.figure(figsize=(9, 12))
     ax = fig.add_subplot(1, 1, 1)
@@ -107,6 +129,12 @@ def temp_emagram(
         dry_l = mpcalc.moist_lapse(plev, t0, 1000 * units.hPa).to("degC")
         ax.plot(dry_l, plev, c="k", linewidth="0.7")
 
+    # wind array
+    wind_i = neary_idx(prs, wind_target_p)
+    wind_prs = prs[wind_i]
+    wind_wd = prs[wind_i]
+    wind_ws = prs[wind_i]
+
     plt.savefig(fig_path, dpi=512)
     plt.close()
 
@@ -151,6 +179,8 @@ def plot_emagram(
         temp = df["Temp0"].values * units("degC")
         rh = df["Humi0"].values * 1e-2
         rh[rh <= 0] = np.nan
+        wd = df["WD"].values * units("deg")
+        ws = df["WS"].values * units("m/s")
         prs = df["Press0"].values * units("hPa")
         dewpoint = mpcalc.dewpoint_from_relative_humidity(temp, rh)
-        temp_emagram(temp, dewpoint, prs, st_name, launch_time, fig_path)
+        temp_emagram(temp, dewpoint, wd, ws, prs, st_name, launch_time, fig_path)
