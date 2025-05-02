@@ -66,7 +66,8 @@ plot emagram and 2D/3D trajectory
 - ```sample/script/plot_3d_trajectory_animation.csh```  
 plot animation of the 3D trajectories.(C shell)
 - ```sample/script/plot_3d_trajectory_animation.py```   
-same as above.(Python)
+same as above.(Python)   
+If you are using Windows, uncomment the commands under "IF Windows" and comment out the commands under "IF Linux" in ```plot_3d_trajectory_animation.py```.
 
 
 

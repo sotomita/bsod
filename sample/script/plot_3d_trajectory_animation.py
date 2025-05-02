@@ -49,6 +49,7 @@ run(
         f"{fig_dir}/{var_name}.gif",
     ]
 )
+# IF Linux (end)
 
 # IF Windows,
 """run(
@@ -62,3 +63,4 @@ run(
         f"{fig_dir}/{var_name}.gif",
     ]
 )"""
+# IF Windows (end)
