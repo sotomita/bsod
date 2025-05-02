@@ -23,7 +23,7 @@ os.makedirs(f"{fig_dir}/frame", exist_ok=True)
 print("plot frames")
 run(
     [
-        "python3",
+        "python",
         "__frame_3d_trajectory.py",
         f"{var_name}",
         f"{start_time}",
@@ -35,6 +35,8 @@ run(
 )
 
 # gif
+
+# IF Linux
 print("make GIF")
 run(
     [
@@ -47,3 +49,16 @@ run(
         f"{fig_dir}/{var_name}.gif",
     ]
 )
+
+# IF Windows,
+"""run(
+    [
+        "magick",
+        "-delay",
+        "30",
+        "-loop",
+        "0",
+        f"{fig_dir}/frame/*png",
+        f"{fig_dir}/{var_name}.gif",
+    ]
+)"""
