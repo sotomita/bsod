@@ -26,7 +26,7 @@ Required packages (tested versions):
 
 To run ```plot_3d_trajectory_animation.csh```, the following are required
 - tqdm (4.67.1)
-- ImageMagick  (6.9.12-98)
+- ImageMagick  (7.1.1-47)
   
 (example: Anaconda env.)
 ```
@@ -63,12 +63,14 @@ check the dependencies.
 conduct quality Control
 - ```sample/script/figures.py```  
 plot emagram and 2D/3D trajectory
-- ```sample/script/plot_3d_trajectory_animation.csh```  
-plot animation of the 3D trajectories.(C shell)
-- ```sample/script/plot_3d_trajectory_animation.py```   
-same as above.(Python,Linux)   
-- ```sample/script/plot_3d_trajectory_animation_win.py```  
-same as above.(Python,Windows)   
+- ```sample/script/plot_3d_trajectory_animation_new.csh```  
+plot animation of the 3D trajectories.(C shell, IMv7)
+- ```sample/script/plot_3d_trajectory_animation_old.csh```  
+same as above.(C shell, IMv6)   
+- ```sample/script/plot_3d_trajectory_animation_new.py```   
+same as above.(Python,IMv7)   
+- ```sample/script/plot_3d_trajectory_animation_old.py```  
+same as above.(Python,IMv6)   
 
 
 
