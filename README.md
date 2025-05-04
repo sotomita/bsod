@@ -15,7 +15,7 @@ This module was developed for Seisui-maru 2407 cruise.
 </p>
 
 ## Dependencies
-Required packages(tested versions):
+Required packages (tested versions):
 - Python (3.13.3)
 - Numpy (2.2.5)
 - Pandas (2.2.3)
@@ -27,20 +27,20 @@ Required packages(tested versions):
 To run ```plot_3d_trajectory_animation.csh```, the following are required
 - tqdm (4.67.1)
 - ImageMagick  (6.9.12-98)
-
+  
 (example: Anaconda env.)
 ```
 conda install -c conda-forge numpy pandas matplotlib cartopy metpy pygmt tqdm imagemagick
 ```   
 ## Usage
 ### preprocess
-1. Prepare field_book.csv
-example:  
+1. Prepare ```field_book.csv```  
+example:
 ```
 st_name,JSTtime,sonde_no
 St.4a,2024-06-18_06:01,1101771
 ```
-2. Run ```bsod.util.get_qcdata()```  
+2. Quality control.   ```bsod.util.get_qcdata()```  
 
 (See also ```sample/script/preprocess.py```)
 ### visualization
