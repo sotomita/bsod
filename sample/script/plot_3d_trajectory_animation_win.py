@@ -36,10 +36,10 @@ run(
 
 # gif
 
-print("make GIF")
+
 run(
     [
-        "convert",
+        "magick",
         "-delay",
         "30",
         "-loop",
