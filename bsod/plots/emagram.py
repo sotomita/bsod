@@ -87,25 +87,25 @@ def temp_emagram(
     for i in range(t0s.shape[0]):
         t0 = t0s[i]
         dry_l = mpcalc.dry_lapse(plev, t0, 1000 * units.hPa).to("degC")
-        ax.plot(dry_l, plev, c="k", linewidth="0.7")
+        ax.plot(dry_l, plev, c="brown", linewidth="0.7")
         label_i = np.abs(dry_l - -88 * units("degC")).argmin()
         if plev[label_i] > 100.0 * units.hPa:
             ax.text(
-                dry_l[label_i], plev[label_i], f"{int(t0.m)}", fontsize=7, color="k"
+                dry_l[label_i], plev[label_i], f"{int(t0.m)}", fontsize=7, color="brown"
             )
         else:
             label_i = np.abs(plev - 102 * units.hPa).argmin()
             ax.text(
-                dry_l[label_i], plev[label_i], f"{int(t0.m)}", fontsize=7, color="k"
+                dry_l[label_i], plev[label_i], f"{int(t0.m)}", fontsize=7, color="brown"
             )
 
     # moist adiabatic line
-    t0s = np.arange(240, 381, 10) * units("K")
+    t0s = np.arange(240, 361, 10) * units("K")
     plev = np.arange(50, 1101) * units.hPa
     for i in range(t0s.shape[0]):
         t0 = t0s[i]
-        dry_l = mpcalc.moist_lapse(plev, t0, 1000 * units.hPa).to("degC")
-        ax.plot(dry_l, plev, c="k", linewidth="0.7")
+        moist_l = mpcalc.moist_lapse(plev, t0, 1000 * units.hPa).to("degC")
+        ax.plot(moist_l, plev, c="purple", linewidth="0.7")
 
     plt.savefig(fig_path, dpi=512)
     plt.close()
