@@ -15,7 +15,7 @@ This module was developed for Seisui-maru 2407 cruise.
 </p>
 
 ## Dependencies
-Required packages:
+Required packages(tested versions):
 - Python (3.13.3)
 - Numpy (2.2.5)
 - Pandas (2.2.3)
