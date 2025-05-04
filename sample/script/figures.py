@@ -52,7 +52,7 @@ for i in range(len(fbook)):
 vars = ["height", "temp", "rh"]
 print("*************************************")
 for var in vars:
-    print(f"trajectory: {var}")
+    print(f"trajectory 2D: {var}")
     os.makedirs(f"{fig_dir}/trajectory2d", exist_ok=True)
     plot_trajectory_2d(
         df_dict,
@@ -76,7 +76,7 @@ for i in range(len(fbook)):
 vars = ["height", "temp", "rh"]
 print("*************************************")
 for var in vars:
-    print(f"trajectory: {var}")
+    print(f"trajectory 3D: {var}")
     os.makedirs(f"{fig_dir}/trajectory3d", exist_ok=True)
     plot_trajectory_3d(
         df_dict,
