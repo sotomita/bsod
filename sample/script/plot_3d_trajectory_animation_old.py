@@ -35,7 +35,6 @@ run(
 )
 
 # gif
-
 print("make GIF")
 run(
     [

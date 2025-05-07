@@ -58,7 +58,7 @@ Sample data was observed in Seisui-maru 2407 cruise
 ```sample/data/field_book.csv```   
 ### script
 - ```sample/scrpit/libcheck.py```  
-check the dependencies.
+check the dependencies.    
 - ```sample/script/preprocess.py```  
 conduct quality Control
 - ```sample/script/figures.py```  
