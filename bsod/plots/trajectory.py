@@ -3,14 +3,14 @@
 
 import numpy as np
 import matplotlib
+
+matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib import cm
 import matplotlib.ticker as mticker
 import cartopy.crs as ccrs
 import cartopy.feature as cfeature
 import pygmt
-
-matplotlib.use("Agg")
 
 
 def plot_trajectory_2d(
