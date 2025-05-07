@@ -5,9 +5,12 @@ from datetime import datetime
 import numpy as np
 import pint
 import pandas as pd
+import matplotlib
 import matplotlib.pyplot as plt
 import metpy.calc as mpcalc
 from metpy.units import units
+
+matplotlib.use("Agg")
 
 
 def temp_emagram(
