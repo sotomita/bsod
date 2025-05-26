@@ -2,3 +2,4 @@
 # -*- encoding utf-8 -*-
 
 from .fieldbook import get_fieldbook
+from .sonde import Sonde

@@ -94,7 +94,12 @@ def get_qcdata(
     for i in range(1, len(df)):
         time = datetime.strptime(df["Time"].iloc[i], "%H:%M:%S")
         time = datetime(
-            time0.year, time0.month, time0.day, time.hour, time.minute, time.second
+            time0.year,
+            time0.month,
+            time0.day,
+            time.hour,
+            time.minute,
+            time.second,
         )
         time = time + timedelta(days=1) if time < time0 else time
         df.loc[i, "Time"] = time
