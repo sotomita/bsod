@@ -56,7 +56,9 @@ def temp_emagram(
     ax.set_aspect(200)
 
     # title
-    ax.set_title(f"{st_name}  {launch_time.strftime('%Y-%m-%d %H:%M')}", fontsize=15)
+    ax.set_title(
+        f"{st_name}  {launch_time.strftime('%Y-%m-%d %H:%M')}", fontsize=15
+    )
 
     # x axis(degC)
     ax.set_xlabel("[degC]")
@@ -94,12 +96,28 @@ def temp_emagram(
         label_i = np.abs(dry_l - -88 * units("degC")).argmin()
         if plev[label_i] > 100.0 * units.hPa:
             ax.text(
+<<<<<<< HEAD
                 dry_l[label_i], plev[label_i], f"{int(t0.m)}", fontsize=7, color="brown"
+=======
+                dry_l[label_i],
+                plev[label_i],
+                f"{int(t0.m)}",
+                fontsize=7,
+                color="k",
+>>>>>>> develop
             )
         else:
             label_i = np.abs(plev - 102 * units.hPa).argmin()
             ax.text(
+<<<<<<< HEAD
                 dry_l[label_i], plev[label_i], f"{int(t0.m)}", fontsize=7, color="brown"
+=======
+                dry_l[label_i],
+                plev[label_i],
+                f"{int(t0.m)}",
+                fontsize=7,
+                color="k",
+>>>>>>> develop
             )
 
     # moist adiabatic line
@@ -151,9 +169,9 @@ def plot_emagram(
 
     # temperature emagram
     if mode == "temp":
-        temp = df["Temp0"].values * units("degC")
-        rh = df["Humi0"].values * 1e-2
+        temp = df["Tmp"].values * units("degC")
+        rh = df["Hum"].values * 1e-2
         rh[rh <= 0] = np.nan
-        prs = df["Press0"].values * units("hPa")
+        prs = df["Prs"].values * units("hPa")
         dewpoint = mpcalc.dewpoint_from_relative_humidity(temp, rh)
         temp_emagram(temp, dewpoint, prs, st_name, launch_time, fig_path)

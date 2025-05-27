@@ -11,10 +11,11 @@ sys.path.append("../../")
 
 import bsod
 from bsod.plots import plot_emagram, plot_trajectory_2d, plot_trajectory_3d
+import namelist
 
-fpath = "../data/field_book.csv"
-qc_data_dir = "../data/qc_data"
-fig_dir = "../fig"
+fpath = namelist.fbook_path
+qc_data_dir = namelist.qc_data_dir
+fig_dir = namelist.fig_dir
 
 os.makedirs(fig_dir, exist_ok=True)
 

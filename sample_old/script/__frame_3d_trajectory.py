@@ -48,9 +48,9 @@ for plot_valid_time in tqdm(time_list):
         sonde_no = fbook["sonde_no"].iloc[i]
         qcdata_fpath = f"{qc_data_dir}/{st_name}.csv"
         df = pd.read_csv(qcdata_fpath, index_col=0)
-        df["Time"] = pd.to_datetime(df["Time"])
-        mask = (plot_valid_time - plot_delta_time <= df["Time"]) & (
-            df["Time"] <= plot_valid_time
+        df["TimeUTC"] = pd.to_datetime(df["TimeUTC"])
+        mask = (plot_valid_time - plot_delta_time <= df["TimeUTC"]) & (
+            df["TimeUTC"] <= plot_valid_time
         )
         if len(df) > 0:
             df_dict[st_name] = df[mask]

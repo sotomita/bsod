@@ -114,9 +114,9 @@ def plot_trajectory_2d(
         if var_name == "height":
             var = df["Height"].values
         elif var_name == "temp":
-            var = df["Temp0"].values
+            var = df["Tmp"].values
         elif var_name == "rh":
-            var = df["Humi0"].values
+            var = df["Hum"].values
 
         sc = ax.scatter(
             lon,
@@ -242,15 +242,15 @@ def plot_trajectory_3d(
         if var_name == "height":
             var = df["Height"].values
         elif var_name == "temp":
-            var = df["Temp0"].values
+            var = df["Tmp"].values
         elif var_name == "rh":
-            var = df["Humi0"].values
+            var = df["Hum"].values
 
         fig.plot3d(
             x=lon,
             y=lat,
             z=z,
-            style="u0.05c",
+            style="u0.03c",
             fill=var,
             cmap=True,
             perspective=[azimuth, elev],

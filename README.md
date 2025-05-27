@@ -33,45 +33,74 @@ To run ```plot_3d_trajectory_animation.csh```, the following are required
 conda install -c conda-forge numpy pandas matplotlib cartopy metpy pygmt tqdm imagemagick
 ```   
 ## Usage
-### preprocess
-1. Prepare ```field_book.csv```  
-example:
+See also ```sample_Seisuimaru2407/script```.  
+### Data Quality Control
+#### 1. Prepare field_book.csv   
+example:  
 ```
 st_name,JSTtime,sonde_no
 St.4a,2024-06-18_06:01,1101771
 ```
-2. Quality control.   ```bsod.util.get_qcdata()```  
-
-(See also ```sample/script/preprocess.py```)
+#### 2.Prepare ```namelist.py```
+set ```fbook_path```,```raw_data_dir```,```qc_data_dir```.  
+```
+fbook_path = "../data/field_book.csv"
+raw_data_dir = "../data/raw_data"
+qc_data_dir = "../data/qc_data"
+```
+#### 3. Run QC script.
+run ```preprocess.py```.  
+post QC data were generated in ```qc_data_dir```.  
+field of QC data.  
+|TimeUTC|Prs|Tmp|Hum|Height|WD|WS|GeodetLon|GeodetLat|
+|----|----|----|----|----|----|----|----|----|
+|UTC time|Pressure[hPa]|Temperature[degC]|RH[%]|Height[m]|Wind Direction[deg]|Wind Speed[m/s]|decimal longitude[deg]|decimal latitude[deg]|
 ### visualization
-- emagram: ```bsod.plots.emagram()```
-- 2D trajectory: ```bsod.plots.plots_trajectory2d```
-- 3D trajectory: ```bsod.plots.plots_trajectory3d```  
-(See also ```sample/script/figures.py```)
+#### 1. set ```namelist.py``` variables.  
+```
+fig_dir = "../fig"
 
-## Sample
+# 2D/3D trajectory
+plot_area = [136, 138, 34.0, 35.5, -4000, 15000]
+# 2D trajectory
+lon_ticks = np.arange(135.5, 138.6, 0.5)
+lat_ticks = np.arange(34.0, 35.6, 0.5)
+
+# 3D trajectory
+azimuth = 240  # 180 : north up
+elevation = 25
+
+# 3D trajectory animation
+var_name = "rh"
+start_time = "2024-06-18_06:00:00"
+end_time = "2024-06-18_16:00:00"
+frame_delta_min = "10"
+plot_delta_min = "20"
+```
+#### 2. Run ```figure.py```.
+- emagram
+- 2D trajectory
+- 3D trajectory
+
+#### 3. run ```plot_3d_trajectory_animation.py```.
+- 3D trajectory animation.  
+
+## Sample_Seisuimaru2407
 ### radiosonde data  
-```sample/data/raw_data```  
+```sample_Seisuimaru2407/data/raw_data```  
 Sample data was observed in Seisui-maru 2407 cruise  
 (2024年度　三重大学　陸海空・環境科学実習).  
 ### field book 
-```sample/data/field_book.csv```   
+```sample_Seisuimaru2407/data/field_book.csv```   
 ### script
-- ```sample/scrpit/libcheck.py```  
-check the dependencies.    
-- ```sample/script/preprocess.py```  
+- ```sample_Seisuimaru2407/libcheck.py```  
+check the dependencies.
+- ```sample_Seisuimaru2407/preprocess.py```  
 conduct quality Control
-- ```sample/script/figures.py```  
+- ```sample_Seisuimaru2407/figures.py```  
 plot emagram and 2D/3D trajectory
-- ```sample/script/plot_3d_trajectory_animation_new.csh```  
-plot animation of the 3D trajectories.(C shell, IMv7)
-- ```sample/script/plot_3d_trajectory_animation_old.csh```  
-same as above.(C shell, IMv6)   
-- ```sample/script/plot_3d_trajectory_animation_new.py```   
-same as above.(Python,IMv7)   
-- ```sample/script/plot_3d_trajectory_animation_old.py```  
-same as above.(Python,IMv6)   
-
+- ```sample_Seisuimaru2407/script/plot_3d_trajectory_animation.py```   
+plot animation of the 3D trajectories.
 
 
 ## Author
