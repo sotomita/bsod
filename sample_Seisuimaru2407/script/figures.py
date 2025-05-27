@@ -24,7 +24,7 @@ fbook = bsod.get_fieldbook(fpath)
 
 # plot emagram
 
-print("*************************************")
+"""print("*************************************")
 print("emagram")
 print("St. name\tJST time\tsonde No.")
 for i in range(len(fbook)):
@@ -58,11 +58,11 @@ for var in vars:
     plot_trajectory_2d(
         df_dict,
         var_name=var,
-        plot_area=[135.5, 138.5, 34.0, 35.5],
+        plot_area=namelist.plot_area[:4],
         fig_path=f"{fig_dir}/trajectory2d/{var}.png",
-        lon_ticks=np.arange(135.5, 138.6, 0.5),
-        lat_ticks=np.arange(34.0, 35.6, 0.5),
-    )
+        lon_ticks=namelist.lon_ticks,
+        lat_ticks=namelist.lat_ticks,
+    )"""
 
 # plot 3D trajectory
 df_dict = {}
@@ -82,8 +82,8 @@ for var in vars:
     plot_trajectory_3d(
         df_dict,
         var_name=var,
-        region=[136, 138, 34.0, 35.5, -4000, 15000],
+        region=namelist.plot_area,
         fig_path=f"{fig_dir}/trajectory3d/{var}3d.png",
-        azimuth=220,  # 180 : north up
-        elevation=25,
+        azimuth=namelist.azimuth,  # 180 : north up
+        elevation=namelist.elevation,
     )

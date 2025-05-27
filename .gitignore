@@ -174,7 +174,11 @@ cython_debug/
 .pypirc
 
 # data
-sample/data/qc_data
+sample_Seisuimaru2407/data/qc_data
 
 # figure
-sample/fig/*
+sample_Seisuimaru2407/fig/*
+
+sample_shionomisaki/data/raw_data
+sample_shionomisaki/data/qc_data
+sample_shionomisaki/fig
