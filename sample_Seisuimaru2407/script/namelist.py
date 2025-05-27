@@ -20,7 +20,7 @@ elevation = 25
 
 # 3D trajectory animation
 var_name = "rh"
-start_time = "2025-05-08_09:00:00"
-end_time = "2025-05-08_17:30:00"
-frame_delta_min = "5"
+start_time = "2024-06-18_06:00:00"
+end_time = "2024-06-18_16:00:00"
+frame_delta_min = "10"
 plot_delta_min = "20"
