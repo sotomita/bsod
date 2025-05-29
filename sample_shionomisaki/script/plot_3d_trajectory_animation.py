@@ -15,6 +15,7 @@ end_time = namelist.end_time
 frame_delta_min = namelist.frame_delta_min
 plot_delta_min = namelist.plot_delta_min
 fig_dir = f"{namelist.fig_dir}/trajectory3d_animation/{var_name}"
+delay_msec = namelist.delay_msec
 
 if os.path.isdir(f"{fig_dir}/frame"):
     shutil.rmtree(f"{fig_dir}/frame")
@@ -42,7 +43,7 @@ run(
     [
         "magick",
         "-delay",
-        "30",
+        f"{delay_msec}",
         "-loop",
         "0",
         f"{fig_dir}/frame/*png",

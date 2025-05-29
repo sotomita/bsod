@@ -25,3 +25,4 @@ start_time = "2025-05-08_09:00:00"
 end_time = "2025-05-08_17:30:00"
 frame_delta_min = "5"
 plot_delta_min = "20"
+delay_msec = 30

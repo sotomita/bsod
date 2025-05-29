@@ -24,3 +24,4 @@ start_time = "2024-06-18_06:00:00"
 end_time = "2024-06-18_16:00:00"
 frame_delta_min = "10"
 plot_delta_min = "20"
+delay_msec = 30
