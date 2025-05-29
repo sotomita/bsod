@@ -96,28 +96,20 @@ def temp_emagram(
         label_i = np.abs(dry_l - -88 * units("degC")).argmin()
         if plev[label_i] > 100.0 * units.hPa:
             ax.text(
-<<<<<<< HEAD
-                dry_l[label_i], plev[label_i], f"{int(t0.m)}", fontsize=7, color="brown"
-=======
                 dry_l[label_i],
                 plev[label_i],
                 f"{int(t0.m)}",
                 fontsize=7,
-                color="k",
->>>>>>> develop
+                color="brown",
             )
         else:
             label_i = np.abs(plev - 102 * units.hPa).argmin()
             ax.text(
-<<<<<<< HEAD
-                dry_l[label_i], plev[label_i], f"{int(t0.m)}", fontsize=7, color="brown"
-=======
                 dry_l[label_i],
                 plev[label_i],
                 f"{int(t0.m)}",
                 fontsize=7,
-                color="k",
->>>>>>> develop
+                color="brown",
             )
 
     # moist adiabatic line
