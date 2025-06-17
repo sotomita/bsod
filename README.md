@@ -19,10 +19,13 @@ Required packages (tested versions):
 - Python (3.13.3)
 - Numpy (2.2.5)
 - Pandas (2.2.3)
+- MetPy (1.7.0)
+
+
+To draw graphs,
+- PyGMT (0.15.0)
 - Matplotlib (3.10.1)
 - Cartopy (0.24.0)
-- MetPy (1.7.0)
-- PyGMT (0.15.0)
 
 To run ```plot_3d_trajectory_animation.csh```, the following are required
 - tqdm (4.67.1)
