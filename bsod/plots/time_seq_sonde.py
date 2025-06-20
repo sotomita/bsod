@@ -11,7 +11,6 @@ mpl.rcParams["font.size"]=14
 import matplotlib.dates as mdates
 sys.path.append("../../")
 import bsod
-from bsod.plots import plot_emagram, plot_trajectory_2d, plot_trajectory_3d
 import namelist
 
 fpath = namelist.fbook_path

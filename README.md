@@ -104,11 +104,12 @@ conduct quality Control
 plot emagram and 2D trajectory
 - ```sample_Seisuimaru2407/figures_3d.py```  
 plot 3D trajectory
-- ```sample_Seisuimaru2407/time_seq_sonde.py```  
-plot time-pressure crosssection
 - ```sample_Seisuimaru2407/script/plot_3d_trajectory_animation.py```   
 plot animation of the 3D trajectories.
-
+### additional plots
+- ```bsod/plots/time_seq_sonde.py```  
+plot time-pressure crosssection
+copy this to directory where namelist.py exists
 
 ## Author
 Sou Tomita
