@@ -1,5 +1,4 @@
-#! /usr/bin/env/python3
-# -*- encoding utf-8 -*-
+#! /usr/bin/env python3
 
 from subprocess import run
 import os
@@ -34,7 +33,7 @@ run(
         f"{frame_delta_min}",
         f"{plot_delta_min}",
         f"{fig_dir}/frame",
-    ]
+   ]
 )
 
 # gif

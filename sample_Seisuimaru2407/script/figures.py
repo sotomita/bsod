@@ -1,5 +1,4 @@
-#!/usr/bin/python3
-# encoding utf-8 -*-
+#!/usr/bin/env python3
 
 import os
 import sys
@@ -63,7 +62,7 @@ for var in vars:
         lon_ticks=namelist.lon_ticks,
         lat_ticks=namelist.lat_ticks,
     )
-
+exit()
 # plot 3D trajectory
 df_dict = {}
 for i in range(len(fbook)):
