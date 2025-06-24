@@ -1,1 +1,0 @@
-plot_3d_trajectory_animation_old.csh

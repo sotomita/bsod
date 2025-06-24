@@ -2,19 +2,13 @@
 # -*- encoding utf-8 -*-
 
 from glob import glob
-from datetime import datetime
 import pandas as pd
 import warnings
-from warnings import WarningMessage
-
-
-class SearchRawfileWarning(WarningMessage):
-    pass
 
 
 def get_raw_df(
     sonde_no: str,
-    parent_dir: str = "./",
+    parent_dir_list: list,
 ) -> pd.DataFrame:
     """Return raw data
 
@@ -22,8 +16,8 @@ def get_raw_df(
     ----------
     sonde_no    :   str
         product number of radiosonde
-    parent_dir    :   str
-        file path of parent directory of raw data files
+    parent_dir_list    :   list
+        file path list of parent directory of raw data files
 
     Returns
     ----------
@@ -31,16 +25,20 @@ def get_raw_df(
         DataFrame with appropriate type conversion.
     """
 
-    fpaths = glob(f"{parent_dir}/*S{sonde_no}.CSV")
+    fpaths = []
+    for parent_dir in parent_dir_list:
+        fpaths += glob(f"{parent_dir}/*S{sonde_no}.CSV")
+
     if len(fpaths) == 0:
-        warnings.warn("No rawdata file is found", SearchRawfileWarning)
-        df = None
+        raise FileNotFoundError(
+            f"raw data file {sonde_no} is not Found in '{parent_dir}'"
+        )
 
     if len(fpaths) >= 1:
         if len(fpaths) > 1:
             warnings.warn(
-                "More than 1 file was found. The first one is read.",
-                SearchRawfileWarning,
+                "More than 1 file is found. The first one is read.",
+                UserWarning,
             )
         fpath = fpaths[0]
         df = pd.read_csv(fpath, skiprows=6)

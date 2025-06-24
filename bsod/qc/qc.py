@@ -36,6 +36,22 @@ def get_qc_df(
     sonde_no: str,
     launch_timeUTC: datetime,
 ) -> pd.DataFrame:
+    """get post QC data.
+
+    Parameters
+    ----------
+    raw_df : pd.DataFrame
+        raw data
+    sonde_no : str
+        sonde No.
+    launch_timeUTC : datetime
+        launch time
+
+    Returns
+    -------
+    pd.DataFrame
+        post QC data
+    """
 
     df = raw_df.copy()
 
