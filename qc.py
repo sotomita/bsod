@@ -5,10 +5,15 @@ import math
 import numpy as np
 import pandas as pd
 
+ST_CONDITION = [7]
+RE_CONDITION = [0, 4]
+GF_CONDITION = [4, 3, 2, 1]
 
-def numeric_condition_idx(
-    df: pd.DataFrame, field: str, conditions: list[float | int]
+
+def __numeric_condition_idx(
+    df: pd.DataFrame, field: str, conditions: list
 ) -> pd.Series:
+
     return pd.to_numeric(df[field], errors="coerce").isin(conditions)
 
 
@@ -23,13 +28,13 @@ def get_qc_df(
 
     # --- remove error records.
     # observation status(ST)
-    st = numeric_condition_idx(df, "ST", [7])
+    st = __numeric_condition_idx(df, "ST", ST_CONDITION)
     # reciever error status(RE)
-    re = numeric_condition_idx(df, "RE", [0, 4])
+    re = __numeric_condition_idx(df, "RE", RE_CONDITION)
     # sonde No.(sondeN)
     sonden = df["SondeN"].astype(str) == sonde_no
     # GPS Flag(GF)
-    gf = numeric_condition_idx(df, "GF", [4, 3, 2, 1])
+    gf = __numeric_condition_idx(df, "GF", GF_CONDITION)
     # number of the GPS satellite(N)
     n = pd.to_numeric(df["N"], errors="coerce") >= 4
 

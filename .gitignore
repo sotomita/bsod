@@ -174,5 +174,5 @@ cython_debug/
 .pypirc
 
 # data
-sample/data
-sample/data/*.pdf
+sample/data/qc_data
+bsod-2.3.1
