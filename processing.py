@@ -13,7 +13,6 @@ if __name__ == "__main__":
         raise FileNotFoundError(f"Field book file is not found: {field_book_fpath}")
 
     fbook_df = pd.read_csv(field_book_fpath)
-    print(fbook_df)
 
     for _, row in fbook_df.iterrows():
         sonde_no = str(row["sonde_no"])
@@ -21,7 +20,7 @@ if __name__ == "__main__":
         launch_time = pd.to_datetime(row["JSTtime"], format="%Y-%m-%d_%H:%M")
         launch_timeUTC = launch_time - pd.Timedelta(hours=9)
 
-        qc_data_fpath = Path(config.qc_data_dir) / f"{sonde_no}_qc.csv"
+        qc_data_fpath = Path(config.qc_data_dir) / f"{st_name}_qc.csv"
 
         s = Sonde(
             sonde_no=sonde_no,
@@ -29,5 +28,8 @@ if __name__ == "__main__":
             raw_data_dir=Path(config.raw_data_dir),
         )
         s.qc_data(qc_data_fpath, recalc=True)
+
+        anl_data_fpath = Path(config.anl_data_dir) / f"{st_name}_anl.csv"
+        s.anl_data(anl_data_fpath, recalc=True)
 
         print(s)

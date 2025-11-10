@@ -175,4 +175,5 @@ cython_debug/
 
 # data
 sample/data/qc_data
+sample/data/anl_data
 bsod-2.3.1

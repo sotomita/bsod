@@ -6,6 +6,7 @@ import warnings
 import pandas as pd
 
 import qc
+import anl
 
 
 class Sonde:
@@ -74,6 +75,35 @@ class Sonde:
         else:
             return pd.read_csv(qc_data_fpath)
 
+    def anl_data(self, anl_data_fpath: Path, recalc: bool = False) -> pd.DataFrame:
+        self.anl_data_fpath = anl_data_fpath
+
+        if not anl_data_fpath.exists():
+            if not anl_data_fpath.parent.exists():
+                warnings.warn(
+                    f"The directory {anl_data_fpath.parent} does not exist and will be created.",
+                    UserWarning,
+                )
+                anl_data_fpath.parent.mkdir(parents=True)
+
+            # conduct ANL processing
+            qc_df = self.qc_data(self.qc_data_fpath, recalc=recalc)
+            anl_df = anl.get_anl_df(qc_df)
+            anl_df.to_csv(anl_data_fpath)
+        else:
+            if recalc:
+                # conduct ANL processing
+                qc_df = self.qc_data(self.qc_data_fpath, recalc=recalc)
+                anl_df = anl.get_anl_df(qc_df)
+                anl_df.to_csv(anl_data_fpath)
+            else:
+                anl_df = pd.read_csv(anl_data_fpath)
+
+        if anl_data_fpath is None or not anl_data_fpath.is_file():
+            raise FileNotFoundError(f"ANL data file is not found: {anl_data_fpath}")
+        else:
+            return pd.read_csv(anl_data_fpath)
+
     def __str__(self) -> str:
 
         return f"""
@@ -81,4 +111,5 @@ class Sonde:
             launch time {self.launch_time}
             raw data: {self.raw_data_fpath}
             qc data: {self.qc_data_fpath if hasattr(self, "qc_data_fpath") else ""}
+            anl data: {self.anl_data_fpath if hasattr(self, "anl_data_fpath") else ""}
         """
